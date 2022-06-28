@@ -58,7 +58,7 @@ $checkemail = "SELECT * FROM users WHERE email = '$email'";
       $gender = $_POST['gender'];
       $joindate = date("F j, Y");
       $query = "INSERT INTO users(username,name,email,password,role,course,gender,joindate,token) VALUES ('$username' , '$name' , '$email', '$password' , '$role', '$course', '$gender' , '$joindate' , '' )";
-      $result = mysqli_query($conn , $query) or die(mysqli_error($conn));
+      $result = mysqli_connect($conn , $query) or die("database connection error");
       if (mysqli_affected_rows($conn) > 0) { 
         echo "<script>alert('SUCCESSFULLY REGISTERED');
         window.location.href='login.php';</script>";
