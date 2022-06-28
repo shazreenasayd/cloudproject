@@ -10,7 +10,7 @@ if (isset($_POST['login'])) {
   mysqli_real_escape_string($conn, $username);
   mysqli_real_escape_string($conn, $password);
 $query = "SELECT * FROM users WHERE username = '$username'";
-$result = mysqli_query($conn , $query) or die (mysqli_error($conn));
+$result =mysqli_connect($conn , $query) or die("database connection error");
 if (mysqli_num_rows($result) > 0) {
   while ($row = mysqli_fetch_array($result)) {
     $id = $row['id'];
