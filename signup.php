@@ -35,14 +35,14 @@ else if ($_POST['password'] !== $_POST['repassword'])
 else {
       $username = $validated_data['username'];
       $checkusername = "SELECT * FROM users WHERE username = '$username'";
-      $run_check = mysqli_connect($conn , $checkusername) or die(mysqli_error($conn));
+      $run_check = mysqli_connect($conn , $checkusername) or die("database connection error"));
       $countusername = mysqli_num_rows($run_check); 
       if ($countusername > 0 ) {
     echo  "<center><font color='red'>Username is already taken! try a different one</font></center>";
 }
 $email = $validated_data['email'];
 $checkemail = "SELECT * FROM users WHERE email = '$email'";
-      $run_check = mysqli_connect($conn , $checkemail) or die(mysqli_error($conn));
+      $run_check = mysqli_connect($conn , $checkemail) or die("database connection error");
       $countemail = mysqli_num_rows($run_check); 
       if ($countemail > 0 ) {
     echo  "<center><font color='red'>Email is already taken! try a different one</font></center>";
@@ -58,7 +58,7 @@ $checkemail = "SELECT * FROM users WHERE email = '$email'";
       $gender = $_POST['gender'];
       $joindate = date("F j, Y");
       $query = "INSERT INTO users(username,name,email,password,role,course,gender,joindate,token) VALUES ('$username' , '$name' , '$email', '$password' , '$role', '$course', '$gender' , '$joindate' , '' )";
-      $result = mysqli_connect($conn , $query) or die(mysqli_error($conn));
+      $result = mysqli_connect($conn , $query) or die("database connection error");
       if (mysqli_affected_rows($conn) > 0) { 
         echo "<script>alert('SUCCESSFULLY REGISTERED');
         window.location.href='login.php';</script>";
